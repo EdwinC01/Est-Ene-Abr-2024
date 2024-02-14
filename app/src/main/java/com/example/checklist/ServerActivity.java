@@ -7,11 +7,15 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -23,8 +27,20 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,33 +48,54 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class ServerActivity extends AppCompatActivity {
 
     String URL = "http://192.168.1.137/server/logout.php";
-    TextView userRPE, userNom;
-    EditText date;
+    String Title = "Registro Vehicular";
+    String[] items = {"D117", "D118", "D119", "D120", "D121", "D122", "D123", "D124", "D125", "D126", "D127"};
+    ArrayAdapter<String> adapterItems;
+    AutoCompleteTextView userRPE, noEco, zone;
+    EditText date, area, km;
     private int nYearIni, nMonthIni, nDayIni, sYearIni, sMonthIni, sDayIni;
     static final int DATE_ID = 0;
     Calendar calendar = Calendar.getInstance();
     Button hola, hola2, hola3;
     ImageButton settings;
     Spinner spinner;
+    private static final String URL_PHP_SCRIPT = "http://192.168.1.137/server/login/home.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
+        this.setTitle(Title);
+
+        userRPE = findViewById(R.id.rpe);
+        noEco = findViewById(R.id.noEco);
+        zone = findViewById(R.id.zone);
+        area = findViewById(R.id.area);
+        km = findViewById(R.id.km);
 
         Intent intent = getIntent();
         if (intent != null) {
-            String usuario = intent.getStringExtra("usuario");
-            String nombreUsuario = intent.getStringExtra("nombreUsuario");
-            userRPE = findViewById(R.id.rpe);
-            userRPE.setText("RPE: " + usuario);
-            userNom = findViewById(R.id.user);
-            userNom.setText("Nombre: " + nombreUsuario);
+            String usuario = getIntent().getStringExtra("usuario");
+            String nombreUsuario = getIntent().getStringExtra("nombreUsuario");
+            String contrasena = getIntent().getStringExtra("contrasena");
+            String zona = getIntent().getStringExtra("zona");
+
+            // Mostrar datos en los EditText
+            userRPE.setText(usuario + "/" + nombreUsuario);
+            noEco.setText(contrasena);
+            zone.setText(zona);
+
+            Log.d("ServerActivity", "Usuario: " + usuario);
+            Log.d("ServerActivity", "contrasena: " + contrasena);
         }
 
         hola = findViewById(R.id.hola);
@@ -132,6 +169,16 @@ public class ServerActivity extends AppCompatActivity {
                 showDialog(DATE_ID);
             }
         });
+
+        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, items);
+        zone.setAdapter(adapterItems);
+        zone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getApplicationContext(), "Zona: " + item, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void changeColor(Button selectedButton) {
@@ -176,7 +223,7 @@ public class ServerActivity extends AppCompatActivity {
     }
 
     private void colocarFecha() {
-        date.setText(nDayIni + "-" + (nMonthIni + 1) + "-" +  nYearIni + "");
+        date.setText(nYearIni + "-" + (nMonthIni + 1) + "-" +  nDayIni + "");
     }
 
     private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -195,5 +242,67 @@ public class ServerActivity extends AppCompatActivity {
                 return new DatePickerDialog(this, onDateSetListener, sYearIni, sMonthIni, sDayIni);
         }
         return null;
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
+    public void Enviar(View view) {
+
+        String rpe = userRPE.getText().toString().trim();
+        String noEconomico = noEco.getText().toString().trim();
+        String zona = zone.getText().toString().trim();
+        String fecha = date.getText().toString().trim();
+        String km_ = km.getText().toString().trim();
+
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("rpe_checklist", rpe);
+            jsonParams.put("no_economico", noEconomico);
+            jsonParams.put("clave_zona", zona);
+            jsonParams.put("fecha_checklist", fecha);
+            jsonParams.put("km", km_);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new EnviarDatosAsyncTask().execute(jsonParams);
+    }
+
+    private class EnviarDatosAsyncTask extends AsyncTask<JSONObject, Void, Void> {
+
+        @Override
+        protected Void doInBackground(JSONObject... jsonObjects) {
+            HttpURLConnection httpURLConnection = null;
+
+            try {
+                URL url = new URL("http://192.168.115.4/server/dataUser.php");
+                httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+                httpURLConnection.setDoOutput(true);
+
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                writer.write(jsonObjects[0].toString());
+                writer.flush();
+                writer.close();
+                os.close();
+
+                // Aquí puedes leer la respuesta del servidor si es necesario
+            } catch (Exception e) {
+                //e.printStackTrace();
+                Log.e("AsyncTaskError", "Error en AsyncTask: " + e.getMessage());
+            } finally {
+                if (httpURLConnection != null) {
+                    httpURLConnection.disconnect();
+                }
+            }
+
+            return null;
+        }
     }
 }

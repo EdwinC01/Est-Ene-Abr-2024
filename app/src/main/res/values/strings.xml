@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Checklist</string>
     <string name="error_field_required">El campo de está vacío</string>
+    <string name="selected">Seleccionar...</string>
     <string name="title_activity_log2">Log2</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

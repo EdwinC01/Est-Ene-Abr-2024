@@ -66,27 +66,6 @@
                 android:gravity="center"
                 android:text="DATOS GENERALES" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/rpe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-                <TextView
-                    android:id="@+id/user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="" />
-
-            </LinearLayout>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -108,15 +87,65 @@
                         android:focusable="true"
                         app:boxBackgroundMode="outline"
                         app:endIconMode="clear_text"
+                        app:helperText="RPE/Nombre"
+                        app:maxLines="1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconDrawable="@drawable/person">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/rpe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:boxBackgroundMode="outline"
+                        app:endIconMode="clear_text"
+                        app:helperText="No. Económico"
+                        app:maxLines="1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:startIconDrawable="@drawable/ic123">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/noEco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:boxBackgroundMode="outline"
                         app:helperText="Zona"
                         app:maxLines="1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:startIconDrawable="@drawable/zone">
 
                         <AutoCompleteTextView
                             android:id="@+id/zone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="none" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,13 +163,14 @@
                         app:endIconMode="clear_text"
                         app:helperText="Fecha de revisión"
                         app:maxLines="1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:startIconDrawable="@drawable/calendar_icon">
 
                         <AutoCompleteTextView
                             android:id="@+id/fecha"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="date" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,6 +181,7 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
                         app:boxBackgroundMode="outline"
                         app:endIconMode="clear_text"
@@ -174,8 +205,7 @@
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
 
-                        app:boxBackgroundMode="outline"
-                        app:endIconMode="clear_text"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:helperText="KM"
                         app:maxLines="1"
                         app:startIconDrawable="@drawable/car">
@@ -222,7 +252,9 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="16dp"
-                        android:text="Siguiente" />
+                        android:layout_marginBottom="15dp"
+                        android:text="Siguiente"
+                        android:onClick="Enviar" />
 
                 </LinearLayout>
 
