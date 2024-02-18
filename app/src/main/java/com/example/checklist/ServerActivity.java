@@ -2,10 +2,13 @@ package com.example.checklist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -75,6 +78,8 @@ public class ServerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
         this.setTitle(Title);
+
+        verificarFormInconcluso();
 
         userRPE = findViewById(R.id.rpe);
         noEco = findViewById(R.id.noEco);
@@ -304,5 +309,69 @@ public class ServerActivity extends AppCompatActivity {
 
             return null;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        guardarDatosEnCache();
+    }
+
+    private void guardarDatosEnCache() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        //editor.putString("userRPE", userRPE.getText().toString().trim());
+        //editor.putString("noECO", noEco.getText().toString().trim());
+        //editor.putString("zone", zone.getText().toString().trim());
+        editor.putString("date", date.getText().toString().trim());
+        editor.putString("km", km.getText().toString().trim());
+
+        editor.apply();
+    }
+
+    private void verificarFormInconcluso() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+
+        if (/*prefs.contains("userRPE") || prefs.contains("noECO") || prefs.contains("zone") || */prefs.contains("date") || prefs.contains("km")) {
+            mostrarWarning();
+        }
+    }
+
+    private void mostrarWarning() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Hay un formulario inconsluso. ¿Desea continuar?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        cargarDatos();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        limpiarDatos();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void cargarDatos() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        //userRPE.setText(prefs.getString("userRPE", ""));
+        //noEco.setText(prefs.getString("noECO", ""));
+        //zone.setText(prefs.getString("zone", ""));
+        date.setText(prefs.getString("date", ""));
+        km.setText(prefs.getString("km", ""));
+
+        limpiarDatos();
+    }
+
+    private void limpiarDatos() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.clear();
+        editor.apply();
     }
 }
