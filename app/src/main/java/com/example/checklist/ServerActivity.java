@@ -68,7 +68,7 @@ public class ServerActivity extends AppCompatActivity {
     private int nYearIni, nMonthIni, nDayIni, sYearIni, sMonthIni, sDayIni;
     static final int DATE_ID = 0;
     Calendar calendar = Calendar.getInstance();
-    Button hola, hola2, hola3;
+    Button hola, hola2, hola3, serverNext;
     ImageButton settings;
     Spinner spinner;
     private static final String URL_PHP_SCRIPT = "http://192.168.1.137/server/login/home.php";
@@ -78,6 +78,9 @@ public class ServerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
         this.setTitle(Title);
+
+        serverNext = findViewById(R.id.serverNext);
+        serverNext.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), GeneralActivity.class)));
 
         verificarFormInconcluso();
 
@@ -103,7 +106,7 @@ public class ServerActivity extends AppCompatActivity {
             Log.d("ServerActivity", "contrasena: " + contrasena);
         }
 
-        hola = findViewById(R.id.hola);
+        /*hola = findViewById(R.id.hola);
         hola.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -340,7 +343,7 @@ public class ServerActivity extends AppCompatActivity {
 
     private void mostrarWarning() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Hay un formulario inconsluso. ¿Desea continuar?")
+        builder.setMessage("Hay un formulario inconcluso. ¿Desea continuar?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {

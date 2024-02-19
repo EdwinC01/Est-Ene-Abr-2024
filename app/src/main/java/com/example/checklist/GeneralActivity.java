@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -49,6 +50,8 @@ public class GeneralActivity extends AppCompatActivity {
         EscObserv = findViewById(R.id.EscObserv);
         TapiObserv = findViewById(R.id.TapiObserv);
         LimpObserv = findViewById(R.id.LimpObserv);
+
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
 
         siguiente.setOnClickListener(v -> {
 
@@ -366,142 +369,182 @@ public class GeneralActivity extends AppCompatActivity {
     }
 
     private void PiechangeColor(Button selectedButton) {
-        PieBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        PieRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        PieMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        PieBueno.setBackground(drawable);
+        PieRegular.setBackground(drawable);
+        PieMalo.setBackground(drawable);
 
         if (selectedButton == PieBueno) {
-            PieBueno.setBackgroundColor(Color.GREEN);
+            PieBueno.setBackground(drawGreen);
         } else if (selectedButton == PieRegular) {
-            PieRegular.setBackgroundColor(Color.YELLOW);
+            PieRegular.setBackground(drawYellow);
         } else if (selectedButton == PieMalo) {
-            PieMalo.setBackgroundColor(Color.RED);
+            PieMalo.setBackground(drawRed);
         }
     }
 
     private void ManochangeColor(Button selectedButton) {
-        ManoBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        ManoRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        ManoMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        ManoBueno.setBackground(drawable);
+        ManoRegular.setBackground(drawable);
+        ManoMalo.setBackground(drawable);
 
         if (selectedButton == ManoBueno) {
-            ManoBueno.setBackgroundColor(Color.GREEN);
+            ManoBueno.setBackground(drawGreen);
         } else if (selectedButton == ManoRegular) {
-            ManoRegular.setBackgroundColor(Color.YELLOW);
+            ManoRegular.setBackground(drawYellow);
         } else if (selectedButton == ManoMalo) {
-            ManoMalo.setBackgroundColor(Color.RED);
+            ManoMalo.setBackground(drawRed);
         }
     }
 
     private void SegchangeColor(Button selectedButton) {
-        SegBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        SegRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        SegMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        SegBueno.setBackground(drawable);
+        SegRegular.setBackground(drawable);
+        SegMalo.setBackground(drawable);
 
         if (selectedButton == SegBueno) {
-            SegBueno.setBackgroundColor(Color.GREEN);
+            SegBueno.setBackground(drawGreen);
         } else if (selectedButton == SegRegular) {
-            SegRegular.setBackgroundColor(Color.YELLOW);
+            SegRegular.setBackground(drawYellow);
         } else if (selectedButton == SegMalo) {
-            SegMalo.setBackgroundColor(Color.RED);
+            SegMalo.setBackground(drawRed);
         }
     }
 
     private void ExtchangeColor(Button selectedButton) {
-        ExtBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        ExtRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        ExtMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        ExtBueno.setBackground(drawable);
+        ExtRegular.setBackground(drawable);
+        ExtMalo.setBackground(drawable);
 
         if (selectedButton == ExtBueno) {
-            ExtBueno.setBackgroundColor(Color.GREEN);
+            ExtBueno.setBackground(drawGreen);
         } else if (selectedButton == ExtRegular) {
-            ExtRegular.setBackgroundColor(Color.YELLOW);
+            ExtRegular.setBackground(drawYellow);
         } else if (selectedButton == ExtMalo) {
-            ExtMalo.setBackgroundColor(Color.RED);
+            ExtMalo.setBackground(drawRed);
         }
     }
 
     private void GatochangeColor(Button selectedButton) {
-        GatoBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        GatoRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        GatoMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        GatoBueno.setBackground(drawable);
+        GatoRegular.setBackground(drawable);
+        GatoMalo.setBackground(drawable);
 
         if (selectedButton == GatoBueno) {
-            GatoBueno.setBackgroundColor(Color.GREEN);
+            GatoBueno.setBackground(drawGreen);
         } else if (selectedButton == GatoRegular) {
-            GatoRegular.setBackgroundColor(Color.YELLOW);
+            GatoRegular.setBackground(drawYellow);
         } else if (selectedButton == GatoMalo) {
-            GatoMalo.setBackgroundColor(Color.RED);
+            GatoMalo.setBackground(drawRed);
         }
     }
 
     private void RefchangeColor(Button selectedButton) {
-        RefBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        RefRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        RefMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        RefBueno.setBackground(drawable);
+        RefRegular.setBackground(drawable);
+        RefMalo.setBackground(drawable);
 
         if (selectedButton == RefBueno) {
-            RefBueno.setBackgroundColor(Color.GREEN);
+            RefBueno.setBackground(drawGreen);
         } else if (selectedButton == RefRegular) {
-            RefRegular.setBackgroundColor(Color.YELLOW);
+            RefRegular.setBackground(drawYellow);
         } else if (selectedButton == RefMalo) {
-            RefMalo.setBackgroundColor(Color.RED);
+            RefMalo.setBackground(drawRed);
         }
     }
 
     private void SuschangeColor(Button selectedButton) {
-        SusBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        SusRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        SusMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        SusBueno.setBackground(drawable);
+        SusRegular.setBackground(drawable);
+        SusMalo.setBackground(drawable);
 
         if (selectedButton == SusBueno) {
-            SusBueno.setBackgroundColor(Color.GREEN);
+            SusBueno.setBackground(drawGreen);
         } else if (selectedButton == SusRegular) {
-            SusRegular.setBackgroundColor(Color.YELLOW);
+            SusRegular.setBackground(drawYellow);
         } else if (selectedButton == SusMalo) {
-            SusMalo.setBackgroundColor(Color.RED);
+            SusMalo.setBackground(drawRed);
         }
     }
 
     private void EscchangeColor(Button selectedButton) {
-        EscBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        EscRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        EscMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        EscBueno.setBackground(drawable);
+        EscRegular.setBackground(drawable);
+        EscMalo.setBackground(drawable);
 
         if (selectedButton == EscBueno) {
-            EscBueno.setBackgroundColor(Color.GREEN);
+            EscBueno.setBackground(drawGreen);
         } else if (selectedButton == EscRegular) {
-            EscRegular.setBackgroundColor(Color.YELLOW);
+            EscRegular.setBackground(drawYellow);
         } else if (selectedButton == EscMalo) {
-            EscMalo.setBackgroundColor(Color.RED);
+            EscMalo.setBackground(drawRed);
         }
     }
 
     private void TapichangeColor(Button selectedButton) {
-        TapiBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        TapiRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        TapiMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        TapiBueno.setBackground(drawable);
+        TapiRegular.setBackground(drawable);
+        TapiMalo.setBackground(drawable);
 
         if (selectedButton == TapiBueno) {
-            TapiBueno.setBackgroundColor(Color.GREEN);
+            TapiBueno.setBackground(drawGreen);
         } else if (selectedButton == TapiRegular) {
-            TapiRegular.setBackgroundColor(Color.YELLOW);
+            TapiRegular.setBackground(drawYellow);
         } else if (selectedButton == TapiMalo) {
-            TapiMalo.setBackgroundColor(Color.RED);
+            TapiMalo.setBackground(drawRed);
         }
     }
 
     private void LimpchangeColor(Button selectedButton) {
-        LimpBueno.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        LimpRegular.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        LimpMalo.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+        Drawable drawable = getResources().getDrawable(R.drawable.btn_colored);
+        Drawable drawGreen = getResources().getDrawable(R.drawable.btn_green);
+        Drawable drawYellow = getResources().getDrawable(R.drawable.btn_yellow);
+        Drawable drawRed = getResources().getDrawable(R.drawable.btn_red);
+        LimpBueno.setBackground(drawable);
+        LimpRegular.setBackground(drawable);
+        LimpMalo.setBackground(drawable);
 
         if (selectedButton == LimpBueno) {
-            LimpBueno.setBackgroundColor(Color.GREEN);
+            LimpBueno.setBackground(drawGreen);
         } else if (selectedButton == LimpRegular) {
-            LimpRegular.setBackgroundColor(Color.YELLOW);
+            LimpRegular.setBackground(drawYellow);
         } else if (selectedButton == LimpMalo) {
-            LimpMalo.setBackgroundColor(Color.RED);
+            LimpMalo.setBackground(drawRed);
         }
     }
 }
