@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".VidriosActivity">
+
+    <ScrollView
+        android:id="@+id/LaySig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vidrios"
+                    android:textSize="32dp"
+                    app:autoSizeTextType="uniform"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:text="Limpiaparabrisas"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal" />
+
+                <Button
+                    android:id="@+id/LPBtnB"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="B"
+                    tools:layout_editor_absoluteX="208dp"
+                    tools:layout_editor_absoluteY="129dp" />
+
+                <Button
+                    android:id="@+id/LPBtnR"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="R"
+                    tools:layout_editor_absoluteX="274dp"
+                    tools:layout_editor_absoluteY="129dp" />
+
+                <Button
+                    android:id="@+id/LPBtnM"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="M" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/draw_comment"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/LPObserv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="Observaciones"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="81dp"
+                    android:layout_weight="1"
+                    android:text="Medallón"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/MedB"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="B"
+                    tools:layout_editor_absoluteX="208dp"
+                    tools:layout_editor_absoluteY="129dp" />
+
+                <Button
+                    android:id="@+id/MedR"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="R"
+                    tools:layout_editor_absoluteX="274dp"
+                    tools:layout_editor_absoluteY="129dp" />
+
+                <Button
+                    android:id="@+id/MedM"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="M"
+                    tools:layout_editor_absoluteX="340dp"
+                    tools:layout_editor_absoluteY="129dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/draw_comment"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/MedObserv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="Obervaciones"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="33dp"
+                    android:layout_weight="1"
+                    android:text="Espejos laterales"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/ELBtnB"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/ELBtnR"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="R" />
+
+                <Button
+                    android:id="@+id/SLBtnM"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:onClick="M"
+                    android:state_pressed="true"
+                    android:text="M" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/draw_comment"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/ELObserv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="Observaciones"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="39dp"
+                    android:layout_weight="1"
+                    android:text="Vidrios laterales"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/VLBtnB"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/VLBtnR"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="R" />
+
+                <Button
+                    android:id="@+id/VLBtnM"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/btn_colored"
+                    android:layout_weight="1"
+                    android:state_pressed="true"
+                    android:text="M" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/draw_comment"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/VLObserv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="Observaciones"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+            <Button
+                android:id="@+id/siguiente"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/btn_colored"
+                android:text="Siguiente"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
