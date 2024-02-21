@@ -203,7 +203,7 @@ public class VidriosActivity extends AppCompatActivity {
         ELBtnM.setBackground(drawable);
 
         if (selectedButton == ELBtnB) {
-            ELBtnR.setBackground(drawGreen);
+            ELBtnB.setBackground(drawGreen);
         } else if (selectedButton == ELBtnR) {
             ELBtnR.setBackground(drawYellow);
         } else if (selectedButton == ELBtnM) {
