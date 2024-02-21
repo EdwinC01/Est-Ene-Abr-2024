@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     //9A8JW 8000056527 nAtnnie117@*
 
     //String URL_SERVIDOR = "http://192.168.115.4/server/servidor/login.php";
-    String URL_SERVIDOR = "http://192.168.1.137/server/login/login.php";
+    String URL_SERVIDOR = "http://192.168.1.114/server/login/login.php";
     //EditText etUsuario, etContrasena;
     Button btnLogin, btnRegistrar;
 
@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etUsuario = findViewById(R.id.edituser);
         etUsuario.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         final EditText etContrasena = findViewById(R.id.editpwd);
+        etContrasena.setText("80000");
         btnLogin = findViewById(R.id.btnInit);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +78,12 @@ public class LoginActivity extends AppCompatActivity {
         });
         btnRegistrar = findViewById(R.id.btnReg);
 
-        etContrasena.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
-        etContrasena.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        //etContrasena.setInputType(InputType.TYPE_CLASS_NUMBER); // | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        //etContrasena.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         etUsuario.setText(preferences.getString(PREF_USERNAME, ""));
-        etContrasena.setText(preferences.getString(PREF_PASSWORD, ""));
+        etContrasena.setText(preferences.getString(PREF_PASSWORD, "80000"));
     }
 
 
@@ -161,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://192.168.115.4/server/login.php");
+                URL url = new URL("http://192.168.1.114/server/login.php");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
